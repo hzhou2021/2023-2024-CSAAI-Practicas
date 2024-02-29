@@ -4,7 +4,7 @@
 
 /* Establecer el fondo para toda la página */
 body {
-    background-image: url('fondo.jpg'); /* Ruta a tu imagen de fondo */
+    background-image: url('fondo.jpg'); /* Ruta a imagen de fondo */
     background-size: cover; /* Para que la imagen de fondo cubra toda la página */
     background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
     background-position: center center; /* Centra la imagen de fondo */
