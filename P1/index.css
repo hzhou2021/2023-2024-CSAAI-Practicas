@@ -1,0 +1,126 @@
+/* Establecer el fondo para toda la página */
+body {
+    background-image: url('fondo.jpg'); /* Ruta a tu imagen de fondo */
+    background-size: cover; /* Para que la imagen de fondo cubra toda la página */
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+    background-position: center center; /* Centra la imagen de fondo */
+    background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace con el contenido */
+    background-color: rgba(0, 0, 0, 0.1); /* Cambia a rgba para definir opacidad */
+}
+
+@font-face {
+    font-family: "PANDA";
+    src: url("KungFuPandaRegular-xYjV.ttf") format("truetype");
+}
+
+/* Estilos para las columnas */
+.columna {
+    display: flex; /* Utiliza flexbox para distribuir el espacio */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en filas */
+}
+
+.izquierda {
+    width: 50%; /* Ancho completo en pantallas pequeñas */
+    border: 2px solid #ffffff; /* Borde sólido de 2px de color blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+}
+
+.derecha {
+    width: 50%; /* Ancho completo en pantallas pequeñas */
+    padding: 10px; /* Espaciado interno */
+}
+
+/* Estilo para la imagen dentro del contenedor */
+.marco-imagen img#foto_perfil {
+    max-width: 100%; /* Asegura que la imagen no se desborde del contenedor */
+    height: auto; /* Mantiene la proporción de aspecto de la imagen */
+    display: block; /* Elimina el espacio adicional debajo de la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    max-height: 200px; /* Define una altura máxima para la imagen */
+}
+
+
+/* Estilo para el contenedor de los datos personales */
+.datos-personales {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    margin-top: 10px; /* Espaciado superior */
+}
+
+#titulo {
+    font-family: PANDA;
+}
+
+#home {
+    font-family: PANDA;
+}
+#correo {
+    font-family: PANDA;
+}
+
+#correo2 {
+    font-family: PANDA;
+}
+
+#telefono{
+    font-family: PANDA;
+}
+#name{
+    font-family: PANDA;
+}
+
+/* Estilo para el contenedor de los datos personales */
+.Estudios {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    margin-top: 10px; /* Espaciado superior */
+}
+
+#titulo2 {
+    font-family: PANDA;
+}
+
+#kung-fu {
+    font-family: PANDA;
+}
+
+#comida {
+    font-family: PANDA;
+}
+
+#film {
+    font-family: PANDA;
+}
+
+/* Estilos para los íconos */
+.datos-personales i {
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+
+
+/* Estilos para las imágenes dentro del contenedor */
+.responsive1 img {
+    max-width: 100%; /* Asegura que la imagen no se desborde del contenedor */
+    height: auto; /* Mantiene la proporción de aspecto de la imagen */
+    display: block; /* Elimina el espacio adicional debajo de la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+
+.iresponsive{
+    width: 50%
+}
+/* Media query para pantallas medianas y grandes */
+@media screen and (min-width: 680px) {
+    .izquierda {
+        width: 50%; /* Ancho de la columna izquierda en pantallas medianas y grandes */
+        border-right: 2px solid #ffffff; /* Borde blanco a la derecha en pantallas medianas y grandes */
+    }
+
+    .derecha {
+        width: 50%; /* Ancho de la columna derecha en pantallas medianas y grandes */
+    }
+}
