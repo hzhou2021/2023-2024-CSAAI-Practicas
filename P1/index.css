@@ -163,11 +163,6 @@ body {
 }
 /* Media query para pantallas medianas y grandes */
 @media screen and (min-width: 680px) {
-    .izquierda {
-        width: 30%%; /* Ancho de la columna izquierda en pantallas medianas y grandes */
-        border-right: 2px solid #ffffff; /* Borde blanco a la derecha en pantallas medianas y grandes */
-    }
-
     .derecha {
         width: 25%; /* Ancho de la columna derecha en pantallas medianas y grandes */
         border-left: 2px solid #ffffff;
