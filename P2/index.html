@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="eS">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clave Secreta</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div id="juego">
+    <h2>Clave Secreta</h2>
+    <div id="clave" class="clave">****</div>
+    <div id="contador" class="contador">0:0:0</div>
+    <div class="botones">
+        <button onclick="pulsar(0)">0</button>
+        <button onclick="pulsar(1)">1</button>
+        <button onclick="pulsar(2)">2</button>
+        <button onclick="pulsar(3)">3</button>
+        <button onclick="pulsar(4)">4</button>
+        <button onclick="pulsar(5)">5</button>
+        <button onclick="pulsar(6)">6</button>
+        <button onclick="pulsar(7)">7</button>
+        <button onclick="pulsar(8)">8</button>
+        <button onclick="pulsar(9)">9</button>
+    </div>
+    <div class="botones">
+        <button onclick="start()">Start</button>
+        <button onclick="stop()">Stop</button>
+        <button onclick="reset()">Reset</button>
+    </div>
+</div>
+
+<div id="cartel-ganador" style="display: none;">
+    <h1>¡Has ganado!</h1>
+    <p id="ganador-mensaje"></p>
+    <button onclick="volverAJugar()">Volver a jugar</button>
+</div>
+
+
+<script src="index.js"></script>
+
+</body>
+</html>
