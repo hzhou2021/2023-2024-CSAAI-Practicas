@@ -1,16 +1,36 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+@media screen and (min-width: 1px) {
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-image: url("boom.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;
+        filter: brightness(150%);
+    }
+
+    #titulo {
+        color: white;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
 }
 
 .clave {
     font-size: 24px;
     margin-bottom: 10px;
+    color: white;
+}
+
+.digito-correcto {
+    color: green;
 }
 
 .contador {
     font-size: 18px;
     margin-bottom: 10px;
+    color: red;
 }
 
 .botones {
@@ -25,11 +45,13 @@ button {
 
 #cartel-ganador {
     display: none;
+    color: white;
 }
 
 #cartel-ganador h1 {
     font-size: 32px;
     margin-bottom: 20px;
+    color: white;
 }
 
 #cartel-ganador button {
