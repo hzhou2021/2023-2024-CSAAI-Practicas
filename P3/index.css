@@ -1,0 +1,18 @@
+@media screen and (min-width: 1px) {
+    #ctiro {
+        background-color: lightblue;
+        border-style: solid;
+        border-width: 1px;
+        border-color: black;
+        border-radius: 5px;
+    }
+    
+    #controles {
+        margin-bottom: 20px;
+    }
+    
+    #cronometro {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+}
