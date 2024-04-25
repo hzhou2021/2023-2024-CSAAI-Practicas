@@ -1,4 +1,4 @@
-@media screen and (min-width: 1px) {
+@media screen and (min-width: 200px) {
     @font-face {
         font-family: Montserrat;
         src: url(Montserrat-Regular.ttf);

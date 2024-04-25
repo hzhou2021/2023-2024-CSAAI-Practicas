@@ -28,9 +28,9 @@ const generateGame = () => {
     if (dimensions % 2 !== 0) {
         throw new Error("Las dimensiones del tablero deben ser un número par.");
     }
-    const img = ['pikachu.jpg', "charmander.png", "bulbasaur.png", "squirtle.png", "chikorita.png", "cyndaquil.png",
-                 "totodile.png", "treecko.png",   "torchic.png",   "mudkip.png",   "piplup.png",    "turtwing.png", 
-                 "chimchar.png",  "snivy.png",    "oshawott.png",  "tepig.png",    "mewtwo.png",     "mew.png"       ];
+    const img = ['pikachu.jpg', "charmander.jpg", "bulbasaur.jpg", "squirtle.jpg", "chikorita.jpg", "cyndaquil.jpg",
+                 "totodile.jpg", "treecko.jpg",   "torchic.jpg",   "mudkip.jpg",   "piplup.jpg",    "turtwing.jpg", 
+                 "chimchar.jpg",  "snivy.jpg",    "oshawott.jpg",  "tepig.jpg",    "mewtwo.jpg",     "mew.jpg"       ];
 
     const picks = pickRandom(img, (dimensions * dimensions) / 2);
     const items = shuffle([...picks, ...picks]);
