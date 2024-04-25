@@ -70,7 +70,7 @@ const pickRandom = (array, items) => {
         const randomIndex = Math.floor(Math.random() * clonedArray.length);
         randomPicks.push(clonedArray[randomIndex]);
         clonedArray.splice(randomIndex, 1);
-    };
+    }
 
     return randomPicks;
 };
@@ -84,7 +84,7 @@ const shuffle = array => {
 
         clonedArray[index] = clonedArray[randomIndex];
         clonedArray[randomIndex] = original;
-    };
+    }
 
     return clonedArray;
 };
@@ -96,13 +96,13 @@ const attachEventListeners = () => {
 
         if (eventTarget.id === 'comenzarButton' && !eventTarget.classList.contains('disabled')) {
             startGame();
-        };
+        }
 
         if (eventTarget.className.includes('card') && !eventParent.className.includes('flipped')) {
             flipCard(eventParent);
         } else if (eventTarget.nodeName === 'comenzarButton' && !eventTarget.className.includes('disabled')) {
             startGame();
-        };
+        }
     });
 
     selectors.restartButton.addEventListener('click', () => {
@@ -158,11 +158,11 @@ const flipCard = card => {
 
     if (!state.gameStarted) {
         startGame();
-    };
+    }
 
     if (state.flippedCards <= 2) {
         card.classList.add('flipped');
-    };
+    }
 
     if (state.flippedCards === 2) {
         const flippedCards = document.querySelectorAll('.flipped:not(.matched)');
@@ -170,12 +170,12 @@ const flipCard = card => {
         if (flippedCards[0].getAttribute('item-back') === flippedCards[1].getAttribute('item-back')) {
             flippedCards[0].classList.add('matched');
             flippedCards[1].classList.add('matched');
-        };
+        }
 
         setTimeout(() => {
             flipBackCards()
         }, 1000);
-    };
+    }
 
     if (!document.querySelectorAll('.card:not(.flipped)').length) {
         setTimeout(() => {
@@ -189,13 +189,13 @@ const flipCard = card => {
             `;
             clearInterval(state.loop);
         }, 1000);
-    };
+    }
 };
 
 const flipBackCards = () => {
     document.querySelectorAll('.card:not(.matched)').forEach(card => {
         card.classList.remove('flipped');
-    })
+    });
     state.flippedCards = 0;
 };
 
