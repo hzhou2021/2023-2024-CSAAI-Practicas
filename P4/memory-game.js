@@ -6,7 +6,7 @@ const selectors = {
     comenzar: document.querySelector('#comenzarButton'),
     restartButton: document.getElementById('restartButton'),
     win: document.querySelector('.win')
-}
+};
 
 const state = {
     gameStarted: false,
@@ -14,7 +14,7 @@ const state = {
     totalFlips: 0,
     totalTime: 0,
     loop: null
-}
+};
 
 const dimensionSelector = document.getElementById('dimensionSelector');
 
@@ -26,7 +26,7 @@ const generateGame = () => {
     const dimensions = dimensionSelector.value;
 
     if (dimensions % 2 !== 0) {
-        throw new Error("Las dimensiones del tablero deben ser un número par.")
+        throw new Error("Las dimensiones del tablero deben ser un número par.");
     }
 
     const emojis = ['🥔', '🍒', '🥑', '🌽', '🥕', '🍇', '🍉', '🍌', '🥭', '🍍'];
@@ -59,51 +59,51 @@ const generateGame = () => {
             img.style.objectFit = 'cover';
         };
     });
-}
+};
 
 
 const pickRandom = (array, items) => {
-    const clonedArray = [...array]
-    const randomPicks = []
+    const clonedArray = [...array];
+    const randomPicks = [];
 
     for (let index = 0; index < items; index++) {
-        const randomIndex = Math.floor(Math.random() * clonedArray.length)
-        randomPicks.push(clonedArray[randomIndex])
-        clonedArray.splice(randomIndex, 1)
-    }
+        const randomIndex = Math.floor(Math.random() * clonedArray.length);
+        randomPicks.push(clonedArray[randomIndex]);
+        clonedArray.splice(randomIndex, 1);
+    };
 
-    return randomPicks
-}
+    return randomPicks;
+};
 
 const shuffle = array => {
-    const clonedArray = [...array]
+    const clonedArray = [...array];
 
     for (let index = clonedArray.length - 1; index > 0; index--) {
-        const randomIndex = Math.floor(Math.random() * (index + 1))
-        const original = clonedArray[index]
+        const randomIndex = Math.floor(Math.random() * (index + 1));
+        const original = clonedArray[index];
 
-        clonedArray[index] = clonedArray[randomIndex]
-        clonedArray[randomIndex] = original
-    }
+        clonedArray[index] = clonedArray[randomIndex];
+        clonedArray[randomIndex] = original;
+    };
 
-    return clonedArray
-}
+    return clonedArray;
+};
 
 const attachEventListeners = () => {
     document.addEventListener('click', event => {
-        const eventTarget = event.target
-        const eventParent = eventTarget.parentElement
+        const eventTarget = event.target;
+        const eventParent = eventTarget.parentElement;
 
         if (eventTarget.id === 'comenzarButton' && !eventTarget.classList.contains('disabled')) {
-            startGame()
-        }
+            startGame();
+        };
 
         if (eventTarget.className.includes('card') && !eventParent.className.includes('flipped')) {
-            flipCard(eventParent)
+            flipCard(eventParent);
         } else if (eventTarget.nodeName === 'comenzarButton' && !eventTarget.className.includes('disabled')) {
-            startGame()
-        }
-    })
+            startGame();
+        };
+    });
 
     selectors.restartButton.addEventListener('click', () => {
         restartGame();
@@ -115,7 +115,7 @@ const attachEventListeners = () => {
         img.style.height = '100%';
         img.style.objectFit = 'cover';
     });
-}
+};
 
 const startGame = () => {
     state.gameStarted = true;
@@ -124,12 +124,12 @@ const startGame = () => {
     dimensionSelector.disabled = true;
 
     state.loop = setInterval(() => {
-        state.totalTime++
+        state.totalTime++;
 
-        selectors.movimientos.innerText = `${state.totalFlips} movimientos`
-        selectors.timer.innerText = `tiempo: ${state.totalTime} sec`
-    }, 1000)
-}
+        selectors.movimientos.innerText = `${state.totalFlips} movimientos`;
+        selectors.timer.innerText = `tiempo: ${state.totalTime} sec`;
+    }, 1000);
+};
 
 const restartGame = () => {
     state.gameStarted = false;
@@ -153,52 +153,52 @@ const restartGame = () => {
 };
 
 const flipCard = card => {
-    state.flippedCards++
-    state.totalFlips++
+    state.flippedCards++;
+    state.totalFlips++;
 
     if (!state.gameStarted) {
-        startGame()
-    }
+        startGame();
+    };
 
     if (state.flippedCards <= 2) {
-        card.classList.add('flipped')
-    }
+        card.classList.add('flipped');
+    };
 
     if (state.flippedCards === 2) {
-        const flippedCards = document.querySelectorAll('.flipped:not(.matched)')
+        const flippedCards = document.querySelectorAll('.flipped:not(.matched)');
 
         if (flippedCards[0].getAttribute('item-back') === flippedCards[1].getAttribute('item-back')) {
-            flippedCards[0].classList.add('matched')
-            flippedCards[1].classList.add('matched')
-        }
+            flippedCards[0].classList.add('matched');
+            flippedCards[1].classList.add('matched');
+        };
 
         setTimeout(() => {
             flipBackCards()
-        }, 1000)
-    }
+        }, 1000);
+    };
 
     if (!document.querySelectorAll('.card:not(.flipped)').length) {
         setTimeout(() => {
-            selectors.gridContainer.classList.add('flipped')
+            selectors.gridContainer.classList.add('flipped');
             selectors.win.innerHTML = `
                 <span class="win-text">
                     ¡Has ganado!<br />
                     con <span class="highlight">${state.totalFlips}</span> movimientos<br />
                     en un tiempo de <span class="highlight">${state.totalTime}</span> segundos
                 </span>
-            `
-            clearInterval(state.loop)
-        }, 1000)
-    }
-}
+            `;
+            clearInterval(state.loop);
+        }, 1000);
+    };
+};
 
 const flipBackCards = () => {
     document.querySelectorAll('.card:not(.matched)').forEach(card => {
-        card.classList.remove('flipped')
+        card.classList.remove('flipped');
     })
-    state.flippedCards = 0
-}
+    state.flippedCards = 0;
+};
 
-generateGame()
+generateGame();
 
-attachEventListeners()
+attachEventListeners();
