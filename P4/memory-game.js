@@ -4,7 +4,7 @@ const selectors = {
     movimientos: document.querySelector('.movimientos'),
     timer: document.querySelector('.timer'),
     comenzar: document.querySelector('#comenzarButton'),
-    restartButton: document.getElementById('restartButton'), // Nuevo selector para el botón de reinicio
+    restartButton: document.getElementById('restartButton'),
     win: document.querySelector('.win')
 }
 
@@ -19,7 +19,7 @@ const state = {
 const dimensionSelector = document.getElementById('dimensionSelector');
 
 dimensionSelector.addEventListener('change', function() {
-    location.reload();
+    restartGame();
 });
 
 const generateGame = () => {
