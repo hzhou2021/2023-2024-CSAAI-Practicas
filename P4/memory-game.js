@@ -28,8 +28,6 @@ const generateGame = () => {
     if (dimensions % 2 !== 0) {
         throw new Error("Las dimensiones del tablero deben ser un número par.");
     }
-
-    const emojis = ['🥔', '🍒', '🥑', '🌽', '🥕', '🍇', '🍉', '🍌', '🥭', '🍍'];
     const img = ['pikachu.jpg', "charmander.png", "bulbasaur.png", "squirtle.png", "chikorita.png", "cyndaquil.png",
                  "totodile.png", "treecko.png",   "torchic.png",   "mudkip.png",   "piplup.png",    "turtwing.png", 
                  "chimchar.png",  "snivy.png",    "oshawott.png",  "tepig.png",    "mewtwo.png",     "mew.png"       ];
