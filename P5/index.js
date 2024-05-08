@@ -277,7 +277,7 @@ btnMinPath.onclick = () => {
     }
 
     // Supongamos que tienes una red de nodos llamada redAleatoria y tienes nodos origen y destino
-    nodoOrigen = redAleatoria[0]; // Nodo de origen
+    nodoOrigen = redAleatoria[numNodos - 5]; // Nodo de origen
     nodoDestino = redAleatoria[numNodos - 1]; // Nodo de destino
 
     // Calcular la ruta mínima entre el nodo origen y el nodo destino utilizando Dijkstra con retrasos
