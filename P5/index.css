@@ -1,7 +1,11 @@
-canvas {
+@media screen and (min-width: 1px) {
+  canvas {
     border: 1px solid black;
+    width: 100%;
+    max-width: 1000px; /* Por ejemplo, puedes ajustar este valor según tus necesidades */
+    height: auto;
   }
-  
+
   .controls {
     display: flex;
     gap: 20px;
@@ -17,4 +21,8 @@ canvas {
     cursor: pointer;
     font-family: Fredoka;
     font-size: 18pt;
+    width: 100%;
+    max-width: 200px; /* Por ejemplo, puedes ajustar este valor según tus necesidades */
+    height: auto;
   }
+}

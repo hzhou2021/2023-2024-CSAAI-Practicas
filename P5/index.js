@@ -196,9 +196,6 @@ function crearRedAleatoriaConCongestion(numNodos, numConexiones) {
     return nodos;
 }
 
-
-
-
 // Generar un número aleatorio dentro de un rango
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -250,10 +247,8 @@ function drawNet(nnodes) {
 
 }
 
-
 // Función de callback para generar la red de manera aleatoria
 btnCNet.onclick = () => {
-
     // Generar red de nodos con congestión creada de manera aleatoria redAleatoria
     // Cada nodo tendrá un delay aleatorio para simular el envío de paquetes de datos
     redAleatoria = crearRedAleatoriaConCongestion(numNodos, nodeConnect);
@@ -264,10 +259,22 @@ btnCNet.onclick = () => {
     // Dibujar la red que hemos generado
     drawNet(redAleatoria);
 
+    // Mostrar el número de nodos
+    document.getElementById('numNodos').textContent = `${redAleatoria.length} Nodos`;
+
+    // Mostrar mensaje de indicación al usuario
+    document.getElementById('mensaje').textContent = 'Red generada correctamente.';
+
+    // Reiniciar el tiempo total a 0 segundos
+    document.getElementById('tiempoEnvio').textContent = 'Tiempo Total: 0 sec';
 }
 
-// Función de callback para generar la ruta mínima
 btnMinPath.onclick = () => {
+    if (!redAleatoria) {
+        // Mostrar mensaje de error si la red no está generada
+        document.getElementById('mensaje').textContent = 'La red no está generada. Por favor, genera primero la red.';
+        return; // Salir de la función
+    }
 
     // Supongamos que tienes una red de nodos llamada redAleatoria y tienes nodos origen y destino
     nodoOrigen = redAleatoria[0]; // Nodo de origen
@@ -276,5 +283,34 @@ btnMinPath.onclick = () => {
     // Calcular la ruta mínima entre el nodo origen y el nodo destino utilizando Dijkstra con retrasos
     rutaMinimaConRetardos = dijkstraConRetardos(redAleatoria, nodoOrigen, nodoDestino);
     console.log("Ruta mínima con retrasos:", rutaMinimaConRetardos);
+
+    // Cambiar el color de los nodos en la ruta mínima a verde
+    rutaMinimaConRetardos.forEach(nodo => {
+        // Dibujar el nodo con color verde
+        ctx.beginPath();
+        ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
+        ctx.fillStyle = 'green';
+        ctx.fill();
+        ctx.stroke();
+
+        // Dibujar el texto del nodo
+        ctx.font = '12px Arial';
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center';
+        nodoDesc = "N" + nodo.id + " delay " + Math.floor(nodo.delay);
+        ctx.fillText(nodoDesc, nodo.x, nodo.y + 5);
+    });
+
+    // Calcular el tiempo total teniendo en cuenta solo el tiempo de retardo de cada nodo
+    let tiempoTotal = 0;
+    rutaMinimaConRetardos.forEach(nodo => {
+        tiempoTotal += nodo.delay; // Sumar el retardo de cada nodo
+    });
+
+    // Calcular el tiempo total en segundos teniendo en cuenta solo el tiempo de retardo de cada nodo
+    let tiempoTotalSegundos = tiempoTotal / 1000; // Convertir de milisegundos a segundos
+
+    // Mostrar el tiempo total en el display
+    document.getElementById('tiempoEnvio').textContent = `Tiempo Total: ${tiempoTotalSegundos.toFixed(2)} sec`;
 
 }
