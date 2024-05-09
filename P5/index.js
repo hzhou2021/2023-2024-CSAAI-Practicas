@@ -274,7 +274,7 @@ btnCNet.onclick = () => {
     document.getElementById('tiempoEnvio').textContent = 'Tiempo Total: 0 sec';
 
     document.getElementById('btnMinPath').disabled = false;
-}
+};
 
 
 btnMinPath.onclick = () => {
