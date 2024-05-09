@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d');
 
 let redAleatoria;
 
-const nodeRadius = 40;
+const nodeRadius = 45;
 const nodeRandomDelay = 1000;
 const numNodos = 5;
 const nodeConnect = 2
@@ -249,9 +249,18 @@ function drawNet(nnodes) {
 
 // Función de callback para generar la red de manera aleatoria
 btnCNet.onclick = () => {
-    // Generar red de nodos con congestión creada de manera aleatoria redAleatoria
-    // Cada nodo tendrá un delay aleatorio para simular el envío de paquetes de datos
-    redAleatoria = crearRedAleatoriaConCongestion(numNodos, nodeConnect);
+    // Obtener el valor del número de nodos del campo de entrada
+    const numNodosInput = parseInt(document.getElementById('numeroNodos').value);
+    if (isNaN(numNodosInput) || numNodosInput < 1 || numNodosInput > 5) {
+        // Mostrar un mensaje de error si el valor no es válido
+        document.getElementById('mensaje').textContent = 'Por favor, ingrese un número válido entre 1 y 5.';
+        document.getElementById('mensaje').style.color = 'red';
+        return; // Salir de la función
+    }
+
+    Nnodos = numNodosInput;
+
+    redAleatoria = crearRedAleatoriaConCongestion(Nnodos, nodeConnect);
 
     // Limpiamos el canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -259,29 +268,45 @@ btnCNet.onclick = () => {
     // Dibujar la red que hemos generado
     drawNet(redAleatoria);
 
-    // Mostrar el número de nodos
-    document.getElementById('numNodos').textContent = `${redAleatoria.length} Nodos`;
-
     // Mostrar mensaje de indicación al usuario
     document.getElementById('mensaje').textContent = 'Red generada correctamente.';
+    document.getElementById('mensaje').style.color = 'green';
 
     // Reiniciar el tiempo total a 0 segundos
     document.getElementById('tiempoEnvio').textContent = 'Tiempo Total: 0 sec';
+
+    document.getElementById('btnMinPath').disabled = false;
 }
 
+
 btnMinPath.onclick = () => {
+    const numNodosChecked = parseInt(document.getElementById('numeroNodos').value);
+    Rnodos = numNodosChecked;
+
+    document.getElementById('btnMinPath').disabled = true;
+
     if (!redAleatoria) {
         // Mostrar mensaje de error si la red no está generada
         document.getElementById('mensaje').textContent = 'La red no está generada. Por favor, genera primero la red.';
+        document.getElementById('mensaje').style.color = 'red';
         return; // Salir de la función
     }
 
     // Supongamos que tienes una red de nodos llamada redAleatoria y tienes nodos origen y destino
-    nodoOrigen = redAleatoria[numNodos - 5]; // Nodo de origen
-    nodoDestino = redAleatoria[numNodos - 1]; // Nodo de destino
+    nodoOrigen = redAleatoria[0]; // Nodo de origen
+    nodoDestino = redAleatoria[Rnodos-1]; // Nodo de destino
 
     // Calcular la ruta mínima entre el nodo origen y el nodo destino utilizando Dijkstra con retrasos
     rutaMinimaConRetardos = dijkstraConRetardos(redAleatoria, nodoOrigen, nodoDestino);
+    
+    // Verificar si la ruta mínima tiene solo un nodo
+    if (rutaMinimaConRetardos.length === 1) {
+        // Mostrar mensaje de que no existe una ruta mínima en este caso y sugerir al usuario que vuelva a generar la red
+        document.getElementById('mensaje').textContent = 'No existe ruta mínima para este caso. Por favor, vuelva a generar la red.';
+        document.getElementById('mensaje').style.color = 'red';
+        return; // Salir de la función
+    }
+
     console.log("Ruta mínima con retrasos:", rutaMinimaConRetardos);
 
     // Cambiar el color de los nodos en la ruta mínima a verde
