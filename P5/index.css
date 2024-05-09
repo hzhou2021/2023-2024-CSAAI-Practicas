@@ -11,6 +11,10 @@
     color: white;
   }
 
+  #numeroNodos {
+    width: 5ch;
+  }
+
   canvas {
     border: 1px solid black;
     width: 100%;
