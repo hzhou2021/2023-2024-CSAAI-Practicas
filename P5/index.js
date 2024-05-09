@@ -7,7 +7,7 @@ let redAleatoria;
 const nodeRadius = 45;
 const nodeRandomDelay = 1000;
 const numNodos = 5;
-const nodeConnect = 2
+const nodeConnect = 2;
 
 
 let nodoOrigen = 0, nodoDestino = 0;
@@ -108,13 +108,11 @@ class Nodo {
             pos += 1;
         }
 
-        return { pos: npos, id: cnode, distance: distn, }
+        return { pos: npos, id: cnode, distance: distn, };
 
     }
 
 }
-
-
 
 // Función para generar una red aleatoria con nodos en diferentes estados de congestión
 function crearRedAleatoriaConCongestion(numNodos, numConexiones) {
@@ -338,4 +336,4 @@ btnMinPath.onclick = () => {
     // Mostrar el tiempo total en el display
     document.getElementById('tiempoEnvio').textContent = `Tiempo Total: ${tiempoTotalSegundos.toFixed(2)} sec`;
 
-}
+};
